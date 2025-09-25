@@ -9,3 +9,8 @@
 1758780666941: - /about?myname=sanoj New request received 
 1758780698225: - /about?myname=sanoj New request received 
 1758780707080: - /about?myname=techysanoj New request received 
+1758782187496: - / Method is - GET New request received 
+1758782269716: - / Method is - GET New request received 
+1758782323347: - /signup Method is - GET New request received 
+1758782329193: - /signup Method is - GET New request received 
+1758782335318: - /signup Method is - GET New request received 

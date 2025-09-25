@@ -1,0 +1,22 @@
+get post put patch delete
+
+1. GET
+    - when you want to get some data from the server
+    - by default all the request are get request
+    - means a kind of read operation on the database
+
+2. POST 
+    - when you want to send and mutate some data in server
+    - means a kind of write operation on the database
+    - like when you fill a form then click on send so it uses POST request
+
+90% times post and get request are used
+
+3. PUT
+    - when you want to upload/put the file on the server
+
+3. PATCH 
+    - when you want to update the data in the server
+
+4. DELETE   
+    - when you want to delete the data in the server

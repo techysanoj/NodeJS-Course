@@ -14,7 +14,9 @@ const myServer = http.createServer((req, res) => {
         res.end(); // to end the response
         return; // to exit the function
     }
-    const log = `${Date.now()}: - ${req.url} New request received \n`;
+    // const log = `${Date.now()}: - ${req.url} New request received \n`;
+    const log = `${Date.now()}: - ${req.url} Method is - ${req.method} New request received \n`; 
+    // by default it is get request
 
     const myUrl = url.parse(req.url, true); // true to get complete url object
 
@@ -24,13 +26,22 @@ const myServer = http.createServer((req, res) => {
         // res.end("Hello from server \n Logged successfully");
         switch(myUrl.pathname) { // changed accordingly
             case '/': 
-                res.end("Homepage");
+                if(req.method === 'GET') {
+                    res.end("GET Request on Home page");
+                }
                 break
             case '/about': 
                 // console.log(myUrl.query); // to get the query parameters
                 const name = myUrl.query.myname || "Guest"; // to get the name from query parameters
                 res.end(`Hello ${name}, Welcome to About us page`);
                 break
+            case '/signup':
+                    if(req.method === 'GET') {
+                        res.end("This is a sign up form");
+                    }
+                    else if(req.method === 'POST') {
+                        res.end("Form Submitted successfully");
+                    }
             default: res.end("404 Page Not Found");
         }
 
