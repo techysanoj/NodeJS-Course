@@ -1,0 +1,22 @@
+For example lets say a person wants to send a mail to another person and then that person sends a reply to it
+
+also we need addtional information on the mail like address, weight, etc actual data will be there also
+so these additional information are called headers.
+and those data are called packets.
+
+Headers:
+    - HTTP Headers are an importan part of the API request and response as they represent the meta-data associated with
+      the API request and response.
+    - Headers carry information for the request and response body.
+
+    like example: 
+    sec-ch-ua
+    "Chromium";v="140", "Not=A?Brand";v="24", "Brave";v="140"
+    upgrade-insecure-requests 1
+    user-agent
+    Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36
+
+    - We can change the request and response headers accordingly
+    - Middleware check the request headers and then work accordingly
+    - Best practise:
+        1. Custom Headers, always add X to custom headers like X-MyName
