@@ -1,0 +1,50 @@
+"dependencies": {
+    "express": "^5.1.0"
+}
+
+here version is ^5.1.0
+basically there are three digits in each version
+1st 5
+2nd 1
+3rd 0
+
+a. last part - Minor fixes
+    optional updates means it does not do anything serious on the app
+    so if we do not update to the latest version then it will not affect the app.
+    means lets say if we get 5.1.1 then it is not required to download
+
+b. middle part - Recommend fix (security fix)
+    lets say from 5.1.0 to 5.2.0
+    means we need to download this immedietly and download this as much early as possible
+
+c. first part - Major release
+    lets say from 5.1.0 to 6.0.0
+    means if we download this then it may happen our app will run or may not run
+    Major or Breaking updates 
+    means if we are making new application then we can download this but for current one we need not do this
+
+we can install a particular version for a particular package using
+npm install express@4.17.1 like this
+
+
+what does the ^ this symbol means in the version?
+    - it means compatible with version
+    - like epxress = ^4.18.2
+    - so means it can change from 4.0.0 < 5.0.0
+    means it will not change 4 to 5 automatically
+    - install all recommended and minor fixes automatically
+    - if we remove ^ then it will not update any minor or recommended fixes
+
+what does the ~ this symbol means
+    - like ~4.18.1 so it will only change the 3rd part(last part) 
+    - like it can go to 4.18.2 .3 and so on but not 4.19.0 like this
+
+
+we can use >=, range and so on accordingly
+4.0.0 - 4.9.9
+>= 4.1.1 <5.0.0 like this
+|| or symbol is also there
+we can also use 4.1.x (here x can be anything )
+latest means we can use latest version when we do npm i
+
+
