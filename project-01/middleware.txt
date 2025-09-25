@@ -1,0 +1,14 @@
+Middleware
+    - lets say client request to server (on a particular route) and it will send the response
+    - overall middleware comes in between these
+    - Client -> Middleware -> Server and then Server -> Client 
+    - And using the middleware we can do processing on the request if anything goes wrong in the request middleware directly
+      sends the resopnse.
+    - It is a function which takes request, process it, response directly or send the request to the server.
+    - It can have multiple middleware like client -> m1 -> m2 -> m3 -> server like this.
+    - It also have access to the response object.
+    Function:
+        1. Execute any code
+        2. Make changes to the request and the response object.
+        3. End the request response cycle.
+        4. Call the next middleware function in the stack using the next().

@@ -8,6 +8,46 @@ const PORT = 8000;
 
 const users = require("./MOCK_DATA.json")
 
+
+
+// this is the middleware
+app.use(express.urlencoded({extended: false})); // to parse form data
+
+// we can create our own middleware next is basically pointing to the next middleware in the loop if there is any
+// app.use((req, res, next) => {
+//     console.log("Middleware called: Hello from middleware 1");
+
+// }); // currently it is not doing anything because it is not calling next() nor sending the request nor sending the response.
+
+
+// app.use((req, res, next) => {
+//     console.log("Middleware called: Hello from middleware 1");
+//     // return res.json({message: "Hello from middleware 1"}); // now this response will be send.
+//     req.myUserName = "techysanoj"; // this will be available from now onwards on the other request object.
+//     next(); // now it will call the next middleware in the loop
+// });
+
+// app.use((req, res, next) => {
+//     console.log("Middleware called: Hello from middleware 2");
+//     console.log('req', req.myUserName);
+//     return res.json({message: "Hello from middleware 2"}); // now this response will be send.
+//     // next(); // now it will call the next middleware in the loop
+// });
+
+// make a middleware which will simply log all the request coming to the server
+app.use((req, res, next) => {
+    const now = new Date();
+    fs.appendFile('./log.txt', `\n Request: ${now}: Method: ${req.method}: Path: ${req.path}`, (err) => {
+        if(err) {
+            console.log("Error in writing log file", err);
+        } else {
+            console.log("Log file written successfully");
+        }
+    });
+    next();
+})
+
+
 app.get("/users", (req, res) => {
     const html = 
     `   
@@ -37,9 +77,6 @@ app.get("/api/users/:id", (req, res) => {
 
     return res.json(user);
 })
-
-// this is the middleware
-app.use(express.urlencoded({extended: false})); // to parse form data
 
 // for post method using post
 app.post("/api/users", (req, res) => {
