@@ -5,17 +5,32 @@ const http = require("http"); // importing built in http module
 
 const fs = require("fs");
 
+const url = require("url"); // importing downloaded url module
+
 const myServer = http.createServer((req, res) => {
     // console.log('New Request recieved: ');
     // console.log("Request: ", req);
+    if(req.url === '/favicon.ico') {
+        res.end(); // to end the response
+        return; // to exit the function
+    }
     const log = `${Date.now()}: - ${req.url} New request received \n`;
+
+    const myUrl = url.parse(req.url, true); // true to get complete url object
+
+    console.log(myUrl);
+
     fs.appendFile("log.txt", log, (err, data) => {
         // res.end("Hello from server \n Logged successfully");
-        switch(req.url) {
-            case '/': res.end("Homepage");
-            break
-            case '/about': res.end("techysanoj");
-            break
+        switch(myUrl.pathname) { // changed accordingly
+            case '/': 
+                res.end("Homepage");
+                break
+            case '/about': 
+                // console.log(myUrl.query); // to get the query parameters
+                const name = myUrl.query.myname || "Guest"; // to get the name from query parameters
+                res.end(`Hello ${name}, Welcome to About us page`);
+                break
             default: res.end("404 Page Not Found");
         }
 
