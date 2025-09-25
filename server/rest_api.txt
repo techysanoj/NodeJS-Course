@@ -1,0 +1,11 @@
+Restfull API
+    - types of API which have some set of standards when client send a request to server and server sends a response.
+    - response can be anything text, image, json, html, etc.
+    - There are some rules:
+        1. Works on the client-server architecture.
+        2. Client should not be dependent on the server. Means simply send the response in the JSON format.
+        3. Always respect all HTTP methods GET, POST, PUT, PATCH, DELETE.  
+            Like if anyone give GET /users then it simply read from DB not update the DB or anything other than read operation.
+            means all the operation should be same as the request method.
+        so while sending the response using express js like res.send(), res.json(), res.render() etc.
+        so here we are using Server Side Rendering (SSR).
