@@ -1,0 +1,19 @@
+MongoDB
+- NoSQL Document based database
+- Strong support for aggregation pipes
+- Works on BSON format
+- Best for Node Applications.
+
+on broader we have collection in MongoDB
+like collection - "users"
+and in each collection we have document like doc1, doc2, doc3 and so on.
+
+Go to official website to download this: 
+https://www.mongodb.com/docs/manual/administration/install-community/?macos-installation-method=homebrew&operating-system=macos
+
+These are some of the commong commands which you need to remeber
+1. show dbs: shows all the databases
+2. use <db_name>: select the database 
+3. show collections: what are the collections present in this database
+4. db.coll.find(): to find anything on the collection like db.users.find({})
+5. db.coll.insert(): to insert anything in the collection like db.users.insert({"name: sanoj", "heheh"})
