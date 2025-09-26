@@ -1,0 +1,3 @@
+Schema - define the schema of the database
+    Schema - Model
+    Using this model we do CRUD operations

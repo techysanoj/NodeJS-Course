@@ -17,3 +17,36 @@ These are some of the commong commands which you need to remeber
 3. show collections: what are the collections present in this database
 4. db.coll.find(): to find anything on the collection like db.users.find({})
 5. db.coll.insert(): to insert anything in the collection like db.users.insert({"name: sanoj", "heheh"})
+
+to use MongoDB in node we need to install a library in it named npm i mongoose 
+
+1.  require the mongoose package
+    const mongoose = require("mongoose");
+2.  Create the schema
+    const userSchema = new mongoose.Schema({
+        first_name: {
+            type: String,
+            required: true
+        },
+        last_name: {    
+            type: String
+        },
+        email: {
+            type: String,
+            required: true,
+            unique: true
+        },
+        gender: {
+            type: String
+        },
+        job_title: {
+            type: String
+        }
+    }, {timestamps: true});
+
+3.  Create the Model
+    const User = mongoose.model("User", userSchema); // name of the model, schema
+
+4.  Connect to the mongoose db
+    mongoose.connect('mongodb://127.0.0.1:27017/youtube-app-1').then(() => console.log("Connected to MongoDB"))
+    .catch((err) => {console.log("Error in connecting to MongoDB", err)});
