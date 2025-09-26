@@ -1,0 +1,24 @@
+HTTP Status Codes
+like 404 not founds
+
+- this basically tells that whether a specific http request has been successfully completed
+- Responses are grouped into:
+    1. Informational Responses (100-199)
+    2. Successfull Responses (200-299)
+    3. Redirection Messages (300-399)
+    4. Client Error Responses (400-499)
+    5. Server Error Responses (500-599)
+- So we mainly want those Successfull response.
+- Now most commonly used or arises:
+    a. 200 OK: request succeeded, like using GET request.
+    b. 201 Created: when something is created like using PUT, POST request.
+    c. 202 Accepted: When like we change something PATCH, DELETE request.
+    d. 204 No Content: when nothing is being sent.
+    e. 400 Bad Request: Server cannot or will not process the request due to something that is percieved to be a client error(eg: malformed request syntax, invalid request message farming etc).
+    f. 401 Unauthorized: When the request is not authenticated and then it cannot be processed accordingly.
+    g. 403 Forbidden: Client does not have access rights to the content. Unlike 401 in 403 the client identity is known to the server.
+    h. 404 Not Found: When server cannot find the requested request or content. automatically handles by express.
+    i. 500 Internal Server Error: when there is any error when processing the request. Like code error or anything.
+    j. 501 Not Implemented: When method is not Implemented.
+
+Note: Install nodemon using npm install nodemon then when anything is updated then it automatically gets restarted the node index.js

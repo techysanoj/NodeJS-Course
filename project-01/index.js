@@ -75,7 +75,9 @@ app.get("/api/users", (req, res) => {
 app.get("/api/users/:id", (req, res) => {
     const id = req.params.id;
     const user = users.find(user =>  user.id === parseInt(id));
-
+    if(!user) {
+        return res.status(404).json({error: "User not found"});
+    }
     return res.json(user);
 })
 
@@ -85,7 +87,11 @@ app.post("/api/users", (req, res) => {
     // TO DO create new users
     const body = req.body; // it will show undefined because it do not know how to parse json data or form data
     // so for this we need to use middleware 
-    console.log('Body is', body);
+    // console.log('Body is', body);
+
+    if(!body.first_name || !body.last_name || !body.email || !body.job_title || !body.gender) {
+        return res.status(400).json({error:"Please provide all the details"});
+    }
 
     const len = users.length;
     const newUser = {id: len + 1, ...body};
@@ -96,7 +102,7 @@ app.post("/api/users", (req, res) => {
         } else {
             console.log("File written successfully");
         }
-        return res.json({status: "done", user: newUser});
+        return res.status(201).json({status: "done", user: newUser});
     });
 })
 
