@@ -1,0 +1,3 @@
+MVC - Model View Controller
+
+Controller manipulate model and model updates the view.
