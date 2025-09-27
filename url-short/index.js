@@ -4,7 +4,12 @@ const {connectMongoDB} = require('./connection');
 const urlRoute = require('./routes/url');
 const URL = require('./models/url');
 
+const cookieParser = require('cookie-parser');
+
+const {restrictToLoggedInUserOnly, checkAuth} = require("./middleware/auth");
+
 const staticRoute = require("./routes/staticRouter");
+const userRoute = require("./routes/user");
 
 connectMongoDB('mongodb://127.0.0.1:27017/short-url').then(() => console.log('MongoDB connected'));
 
@@ -17,9 +22,11 @@ app.set('views', path.resolve('./views')); // it tells that our views are in vie
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false})); // it will parse the urlencoded data
+app.use(cookieParser()); // it will parse the cookies
 
-app.use('/url', urlRoute); 
-app.use('/', staticRoute); // it will serve static files from public folder
+app.use('/url', restrictToLoggedInUserOnly, urlRoute); 
+app.use('/', checkAuth, staticRoute); // it will serve static files from public folder
+app.use('/user',checkAuth ,userRoute); // it will handle user related routes
 
 // app.use('/:shortID', handleGetShortURL);
 

@@ -1,0 +1,22 @@
+Authentications:
+
+Patterns:
+    1. Statefull: which maintains state or data or server side
+    2. Stateless: Which has no state
+
+1. Statefull
+    - Person has a car and need to do parking and there is a parking boy and tells him to park.
+    - As we know when we do parking we get a ticket/pass and parking boy note down that ticket details.
+    - So when we want to get the car we need to show the ticket/pass and then parking boy check that details and then return the ticket and delete the details.
+    - So here managing the ticket details at the parking boy is a kind of state.
+
+    Now in nodejs:
+    - Client request to server using username and password and then server returns a unique session id.
+    - Server has maintain its track in its own db.
+    - So whenever we want to get something like /users we need to send the uid to it so that server will know about which client send the request.
+    - Server sends the UID in form of cookies, responses, headers. 
+    - In restapi we will use headers, and for EJS we will use cookies.
+
+    Now in Express Flow:
+    - client send a request to Auth Middleware (Check for cookie value or uid, if valid calls next() else reject the request) then this middleware will route to the endpoint route.
+    
